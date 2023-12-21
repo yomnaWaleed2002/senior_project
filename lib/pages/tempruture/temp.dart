@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class temp extends StatelessWidget {
@@ -13,11 +14,7 @@ class temp extends StatelessWidget {
           padding: const EdgeInsets.all(42),
           child: Row(
             children: [
-              CircleAvatar(
-                backgroundImage: AssetImage('images/thermometer 3.png'),
-                radius: 33,
-                backgroundColor: Colors.white,
-              ),
+              Image.asset('images/thermometer_3-removebg-preview.png',width: 60,height: 60,),
               Padding(
                 padding: const EdgeInsets.only(left: 28),
                 child: Text(
@@ -34,18 +31,50 @@ class temp extends StatelessWidget {
           ),
         ),
         Center(
-          child: Container(
-            width: 340,
-              height: 340,
-             child: SleekCircularSlider(
-           appearance: CircularSliderAppearance(angleRange: 180,customColors:CustomSliderColors(progressBarColors: [Colors.yellowAccent,Colors.deepOrange])),
-           initialValue: 50,
-          ) ,
-           
-          )
-          ),
+            child: Container(
+                width: 340,
+                height: 340,
+                child: CircularPercentIndicator(
+                  radius: 110.0,
+                  arcType: ArcType.FULL,
+                  lineWidth: 15,
+                  percent: 0.75,
+                  circularStrokeCap: CircularStrokeCap.round,
+                  arcBackgroundColor: Colors.grey.withOpacity(0.3),
+                  center: Padding(
+                    padding: const EdgeInsets.only(top: 60),
+                    child: Column(
+                      children: [
+                        Text(
+                          '75',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF469FD1),
+                            fontSize: 88,
+                            fontFamily: 'Century Gothic',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                            letterSpacing: -2.64,
+                          ),
+                        ),
+                        Text(
+                          'Degrees'.tr,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF459ED1),
+                            fontSize: 26,
+                            fontFamily: 'Century Gothic',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  progressColor: Colors.deepOrange,
+                ))),
         SizedBox(
-          height: 70,
+          height: 40,
         ),
         ElevatedButton(
           onPressed: () {},
@@ -58,7 +87,7 @@ class temp extends StatelessWidget {
           ),
           child: SizedBox(
             width: 103,
-            height: 31,
+            height: 32,
             child: Text(
               "Measure".tr,
               style: TextStyle(
@@ -66,7 +95,7 @@ class temp extends StatelessWidget {
                 fontSize: 24,
                 fontFamily: 'Plus Jakarta Sans',
                 fontWeight: FontWeight.w500,
-                height: 0,
+                height: 0.8,
               ),
             ),
           ),

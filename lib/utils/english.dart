@@ -1,6 +1,6 @@
 const Map<String, String> english = {
-  'englisg': 'englisg',
-  'arabic': 'arabic',
+  'English': 'English',
+  'Arabic': 'Arabic',
   'language': 'language',
   'theme': 'theme',
   'Settings': 'Settings',

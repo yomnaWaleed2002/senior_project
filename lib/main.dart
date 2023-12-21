@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//import 'package:senior_project/pages/bottombar.dart';
+import 'package:senior_project/pages/firstScreen.dart';
 import 'package:senior_project/pages/heart/heart.dart';
-import 'package:senior_project/pages/login_screen.dart';
+
 import 'package:senior_project/pages/oxgen/oxgen.dart';
-//import 'package:senior_project/pages/oxgen/wave.dart';
 import 'package:senior_project/theme/theme_constants.dart';
 import 'package:senior_project/theme/theme_manager.dart';
 import 'package:senior_project/pages/chat.dart';
+import 'package:senior_project/utils/change_language.dart';
 import 'package:senior_project/utils/translation.dart';
+import 'package:day_night_switcher/day_night_switcher.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -41,12 +43,11 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     return GetMaterialApp(
-     
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
-      home: LoginScreen(),
+      home: SplashScreen(),
       translations: Translation(),
       locale: Locale('english'),
       fallbackLocale: Locale('english'),
@@ -62,11 +63,12 @@ class Setting extends StatefulWidget {
 }
 
 class _MyHomeScreenState extends State<Setting> {
-  
   String _selectedlang = 'english';
-  List<Widget> Options = [Setting(),chat(),heart(),oxgen()];
+  bool click = true;
+  bool click1 = true;
+  List<Widget> Options = [Setting(), chat(), heart(), oxgen()];
   Widget build(BuildContext context) {
-  //TextTheme _textTheme = Theme.of(context).textTheme;
+    //TextTheme _textTheme = Theme.of(context).textTheme;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       body: Column(
@@ -117,18 +119,22 @@ class _MyHomeScreenState extends State<Setting> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 180),
+                  padding: const EdgeInsets.only(right: 100),
                   child: Text(
                     "Dark Mode".tr,
                     style: TextStyle(fontSize: 17),
                   ),
                 ),
-                Switch(
-                   
-                    value: _themeManager.themeMode == ThemeMode.dark,
-                    onChanged: (newValue) {
-                      _themeManager.toggleTheme(newValue);
-                    }),
+                DayNightSwitcher(
+                  dayBackgroundColor: Color.fromARGB(255, 184, 184, 186),
+                  nightBackgroundColor: Color.fromARGB(236, 255, 255, 255),
+                  starsColor: Colors.white,
+                  cloudsColor: Colors.blue,
+                  isDarkModeEnabled: _themeManager.themeMode == ThemeMode.dark,
+                  onStateChanged: (newValue) {
+                    _themeManager.toggleTheme(newValue);
+                  },
+                ),
               ],
             ),
           ),
@@ -162,31 +168,92 @@ class _MyHomeScreenState extends State<Setting> {
                   "select language".tr,
                   style: TextStyle(fontSize: 17),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 120),
-                  child: DropdownButton(
-                    items: [
-                      DropdownMenuItem(
-                        child: Text('english '.tr),
-                        value: 'english',
-                      ),
-                      DropdownMenuItem(
-                        child: Text('arabic '.tr),
-                        value: 'arabic',
-                      )
-                    ],
-                    value: _selectedlang,
-                    onChanged: (val) {
-                      setState(() {
-                        _selectedlang = val as String;
-                      });
-                      Get.updateLocale(Locale(_selectedlang));
-                    },
-                  ),
-                )
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 25, right: 30),
+            child: Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      click = !click;
+                    });
+                    Controller.changelan('english');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: click
+                        ? Color.fromARGB(255, 184, 184, 186)
+                        : Color(0xFF616672),
+                    fixedSize: const Size(342, 56),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset('images/en.png'),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "English".tr,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontFamily: 'Century Gothic',
+                            fontWeight: FontWeight.w400,
+                            height: 0.9,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      click1 = !click1;
+                     
+                    });
+                    Controller.changelan('arabic');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: click1
+                        ? Color.fromARGB(255, 184, 184, 186)
+                        : Color(0xFF616672),
+                    disabledBackgroundColor: Colors.black,
+                    fixedSize: const Size(342, 56),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset('images/ar.png'),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "Arabic".tr,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontFamily: 'Century Gothic',
+                            fontWeight: FontWeight.w400,
+                            height: 1,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           /* Padding(
               padding: const EdgeInsets.only(right: 190,top:30),
               child: GestureDetector(child:
@@ -201,11 +268,6 @@ class _MyHomeScreenState extends State<Setting> {
             ),*/
         ],
       ),
-         
-           
-     
     );
   }
-
-  
 }

@@ -30,8 +30,10 @@ dependencies:
   awesome_ripple_animation: ^2.0.0
   wave_loading_indicator: ^1.0.7
   liquid_progress_indicator_v2: ^0.5.0
+  lite_rolling_switch: ^1.0.1
+  percent_indicator: ^4.0.1
   
-
+   
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -39,6 +41,7 @@ dependencies:
   provider: ^6.0.5
   get: 4.5.1
   get_storage: ^2.0.3
+  
   
   
 
@@ -64,12 +67,14 @@ flutter:
     - images/heart-rate 1.png
     - images/oxygen 2.png
     - images/thermometer 2.png
-    - images/thermometer 3.png
     - images/settings 3.png
     - images/customer-service 1.png
     - images/logo.jpg
     - images/oxygen (1) 1.png
     - images/H-Bionic Logo Design Icon-01 1-fotor-20231204194535.png
+    - images/ar.png
+    - images/en.png
+    - images/thermometer_3-removebg-preview.png
 
    
   #  - images/m.jpg
