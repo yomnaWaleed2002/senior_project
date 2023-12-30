@@ -20,7 +20,7 @@ class oxgen extends StatelessWidget {
                 backgroundColor: Colors.white,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 28),
+                padding: const EdgeInsets.only(left: 28,right: 28),
                 child: Text(
                   "Oxygen Ratio".tr,
                   style: TextStyle(

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+
 
 class temp extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class temp extends StatelessWidget {
             children: [
               Image.asset('images/thermometer_3-removebg-preview.png',width: 60,height: 60,),
               Padding(
-                padding: const EdgeInsets.only(left: 28),
+                padding: const EdgeInsets.only(left: 28,right: 28),
                 child: Text(
                   "Temperature".tr,
                   style: TextStyle(

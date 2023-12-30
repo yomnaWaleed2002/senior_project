@@ -1,4 +1,4 @@
-const Map<String, String> english = {
+const Map<String, String> en_US = {
   'English': 'English',
   'Arabic': 'Arabic',
   'language': 'language',

@@ -1,10 +1,10 @@
-const Map<String, String> arabic = {
+const Map<String, String> ur_PK = {
   'English': 'الانجليزية',
   'Arabic': 'العربية',
   'language': 'اللغة',
   'theme': 'السمات',
   'Settings': 'الاعدادات',
-  'Dark Mode': 'الوضع الداكن',
+  'Dark Mode':'الوضع الداكن',
   'About Developers>': 'حول المطورين>',
   'Temperature': 'درجة الحرارة',
   'Degrees': 'درجات',
