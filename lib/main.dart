@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-import 'package:senior_project/languagechangeprovider.dart';
 import 'package:senior_project/pages/bottombar.dart';
 //import 'package:senior_project/pages/firstScreen.dart';
 import 'package:senior_project/pages/heart/heart.dart';
