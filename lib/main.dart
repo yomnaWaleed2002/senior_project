@@ -183,7 +183,7 @@ class _MyHomeScreenState extends State<Setting> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 25, right: 30,left: 30),
+            padding: const EdgeInsets.only(top: 25, right: 40,left: 40),
             child: Column(children: [
               ElevatedButton(
                 onPressed: () {
@@ -266,3 +266,4 @@ class _MyHomeScreenState extends State<Setting> {
     );
   }
 }
+
